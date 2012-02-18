@@ -1,0 +1,214 @@
+Version History
+===============
+2012 Feb 10 - v0.53 jkv
+    * Support newzbin2.es
+
+2007 Mar 27 - v.052 kdog
+	+ [Feature Request #1454] Added support for SSL servers 
+	* Fixed minor delegate bug with status updates
+
+2006 Sep 11 - v0.51 penndu/over
+	+ Modify the directories : the cache directory and the config files are now in %APPDATA%\nomp
+	  (until this exist) and the default download directory is in "my documents". It's because we
+	  have not always the right to write in the pathtoexe directory (install made bye an administrator)
+	* [Bug #5564] fixed the bug with article shown queued and never downloaded 
+	  (modify FillQueues to add the articles beeing donloading)
+	* [Bug #4922] Fixed problem with pause or unpause who didn't effect immediately 
+	  (rebuilding dl queue when pause, unpause or moving an aticle in the queue)
+	* Fixed a bug who let a file open when no space left on disk while writing 
+	  (verify the space left on disk before opening file)(WMI should be replaced with DriveInfo when
+	  migration to .NET 2.0)
+	* Fixed a bug while decoding missformed yenc header (rewrite correctly the spaces in the line)
+	+ Modify the totalMB : only the articles to be downloaded (ie not the paused ) are treated in the 
+	  count, so the remaining time is the real time until the download is ready
+	+ Modify the completedMB : only the segments to be downloaded are counted (ie not the paused), so 
+	  the completed cant be greather than the total
+	+ Modify completion (same reasons as above)
+	* Fixed connect retry : when connect is OK, the ConnectAttempts must be reseted
+	+ Migrate to .NET 2.0
+	* fix divide by zero error
+
+2005 Oct 23 - v0.50
+	* [Bug #4053] Fixed edit menu add/edit/delete to be disabled when connected
+	* [Bug #4072] Fixed the Disconnect on idle not being set properly
+	+ [Request #1105] Added option to delete prune from right click menu
+	+ [Request #1149] Added quick options for connect/disconnect
+	
+	
+
+2005 Oct 15 - v0.49
+	+ Added option to pause par downloading
+	+ Added option to decode all incompletes.
+
+2005 Apr 23 - v0.48
+	* Fixed the file association so it will work when installed in a folder with a space
+	+ Added a button to set all incompletes back to queued
+	+ Added a feature to reconnect if user was disconnected from being idle and user imports a new nzb file
+	
+2005 Mar 14 - v0.47
+	* Fixed the '%z' so that it supports 'msgidlist_uid' files from newzbin as well
+	+ Added a '%y' option that is the same as '%z' but it replaces '_' with ' '	
+	
+2005 Feb 15 - v0.46
+	* Fixed the monitor folder option to wait until the file has finished downloading.
+	
+2005 Feb 10 - v0.45
+	+ Added the option to monitor a folder for new NZB files.  In the
+	preferences window you can select the folder which you want to monitor.
+	Whenever a new nzb file is created in this folder it will automatically be
+	imported into NOMP.
+
+2005 Feb 09 - v0.44
+	* Fixed bug with importing a nzb file and then having the config files saved in the wrong folder
+	* Fixed bug with opening the window from the tray and having it set the window size to 0x0
+	* Fixed 'disconnect on idle' so that it saves it to the options file
+	+ Changed the import NZB functionality to allow importing multiple .nzb
+		files at one time
+	+ Added a new download folder option '%z' which can be used for nzb files imported
+		from newzbin (msgid_111111_Blah.nzb will become Blah).  If the nzb file
+		doesn't follow the msgid_<number> format it will just create the folder
+		the same way the '%i' does
+	+ Saves the window location now and whether or not the form is maximized
+	+ Added option to empty the cache 
+	+ Added an attempt at a fix for when you import/delete entries while downloading and the current download stalls 
+2004 Sep 19 - v0.43
+-------------------
+  + Added 'Needs Group' option, see 'Needs Group' section in the changelog.txt for 
+    more information.
+
+2004 Sep 06 - v0.42
+-------------------
+  * Fixed 'connect on startup', it actually works now
+  * Fixed nzb file import problem when other elements in the XML where present 
+    (like <!-- --> comments)
+  * Fixed nzb file import problem when the segments wherent in the correct order
+  * Fixed directory creation, removed *?:|<>\/ signs from directories
+  * Changed connection timeout from 30s to 60s
+  * Changed 'Limit Attempts' to be disabled by default 
+    (only with fresh NZB-O-Matic install)
+  * Fixed directory creation when 'c:\' was used 
+    (gave a startindex error)
+  * Fixed rare occurrance that finished parts would not reflect actual number 
+    of downloaded parts, and thus would not trigger a decode until NZB-O-Matic 
+    got restarted.
+  + Added 'save window status' menu item, when checked the window + column sizes 
+    will be saved.
+  + Added 'downloading' status, if a segment of an file is being downloaded it 
+    will mark the article as 'downloading'.
+  + Added error code in log when an article fails to decode properly because 
+    the directory cant be created.
+
+2004 May 09 - v0.41
+-------------------
+  * Fixed 'Force Decode', now it really works ;)
+  * Disconnect / Connect will now cause the failed servers to be reset.
+  * If a connection gets corrupted (for some reason), then it'll be disconnected.
+
+2004 Apr 14 - v0.40
+-------------------
+  * Fixed 'Force Decode', wasnt working for some reason last time
+  * Fixed decoding of articles that contain more then 1 file
+
+2004 Apr 02 - v0.39
+-------------------
+  * Fixed the timeout, connections should no longer stall, connections that have timed out 
+    will reconnect within the retry delay set in options.
+  * The queue will no longer be emptied when its altered.
+
+2004 Mar 29 - v0.38
+-------------------
+  + Added connection timeout (30s), and automatic reconnecting on a disconnect
+  * Fixed segments being marked as 'failed' when the connection was disconnected
+  * Fixed CPU usage 'bug'
+
+2004 Mar 15 - v0.37
+-------------------
+  * TimeSpan exceptions fixed
+  * Single part files now decode correctly and should no longer fail
+  * Folder variables are now printed correctly, see above
+  
+
+2004 Mar 13 - v0.36
+-------------------
+  ! Huge re-write of back-end code along with code cleanup
+  * Article re-ordering bug fixes and clicking a column header twice now reverses the order
+  + Added buttons for sorting article download queue
+  + Added in-built update capability, click Help->Update to check for and download new versions
+  * Fixed file .nzb association and now properly removes association when de-selected
+  * Multiple server handling got tuned up, should be marginally faster
+  + Added enabling/disabling of servers, can be changed while connected
+  * Connections now show the subject and part of file they are downloading
+  * Improved error and information messages in status log
+
+    (Note: PowerPost .nzb files are not being created properly, the author has been informed
+           and e-mailed working code. I'll post a working version on the NZB-O-Matic site
+           along with the source (GPL) shortly if needed. )
+
+2004 Mar 03 - v0.34
+-------------------
+  * Fixed program hanging when minimized and downloading
+  * Servers should no longer disappear from the list after editing
+  * Lots of other bug fixes, program should be a fairly stable
+  + Added periodic saving of state in case program crashes
+  + Download folder selection is now working
+
+2004 Feb 18 - v0.32
+-------------------
+  * Authentication problems *should* be fixed
+  + New status logging options to save and clear buffer
+  + Estimated time to download completion added
+  + Added "/start" command line switch to connect on start-up
+  + Added "/exit" command line switch to exit on completion
+  * Multiple files now loading correctly from command line
+  + Reordering of the transfer queue is now functional
+  + Added version in the log file
+  + Added decoding of partial files
+
+2004 Feb 14 - v0.31
+-------------------
+  * Disconnect on idle is now functioning properly
+  + Retry connections on fail is now implemented fully
+  + Limit connection attempts also fully working
+  * Fixed buttons that were linked incorrectly
+
+2004 Feb 14 - v0.30
+-------------------
+  * Fixed a whole bunch of stuff I broke
+  * Server editing was going out of bounds is fixed
+  * Server and options menu now save/load correctly
+  + Added options menu (not all options implemented however)
+  * Fixed program crashing on attempting to connect
+  * Splitter bar fixed, you can now resize the windows again
+  + Added Base-64 decoding
+
+2004 Feb 13 - v0.25
+-------------------
+  + Shutdown on completion
+  + Toggle minimize to system tray or leave on bar (doesn't carry over between programs runs,
+    on list of things to do)
+  + Ability to prune list (remove complete/deleted items, if it's failed use delete,
+    automatically pruned on disconnection)
+  + Re-write of queue class, can add/delete items when connected (reordering is now possible 
+    but not implemented, on list of things to do) 
+  + Server adding/editing/deleting in handy pop-up windows, no need to touch xml again.
+
+2004 Feb 09 - v0.20
+-------------------
+  + Added server groups (e.g. priorities
+  + Post will be marked as Error when a yENC CRC error occures and as Internal Error when
+    the decoder really failed.
+  + Added option to remove files from the download queue.
+  + Added progress window when importing NZB files.
+  + Improved speed report, previous version reported download speeds which where too high.
+  + Added minimize to tray (the 'X' button will minimize it to the tray)
+  + Added drag & drop of NZB files
+
+2004 Feb 05 - v0.11
+-------------------
+  * Fixed UUEncode detection problem
+  * Fixed that a fault in the decoder would crash the decoder thread
+
+
+2004 Feb 04 - v0.10
+-------------------
+  + First binaries released

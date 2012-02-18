@@ -1,0 +1,27 @@
+-option to set all incomplete back to queued to try again
+
+-load nomp with autoloading the .nzb file (try it with NZB4U)
+
+-sometimes skips files leaving them as queued
+	+i've put a temporary fix in there that will cause the queue to be reloaded every 5 minutes
+
+-put check boxes so you can check/uncheck which files you want to download (automatically load par files as unchecked and only if you need them, then you can check them)
+	+this appears to be a bit of work as i will need to change the way the queue is stored
+
+-specify server(s) for each nzb file
+	+haven't spent much time with this one but i think it's a fairly big change
+
+-tooltip over tray icon to show which files are being downloaded, percentage finished etc
+	+this should be a couple minor changes but not really that important for me
+
+-various alerts (connect, disconnect, queue finished, nzb file finished)
+	+all of these should be relatively easy to add in except the nzb file finished alert
+
+-sort/split files by nzb
+	+use a treeview instead to show all the files for a nzb file you imported.  this should make it easy to remove a whole nzb file and see how much of a nzb file has finished downloading
+
+-add integrated newzbin/usenetjunkie support
+	+though this would be quite nice i'm not in a rush to do this one
+
+-auto save options
+	+right now the whole queue gets rewritten to the disk every minute (plus the options and server list even though they get saved as soon as you make changes to them).  i'd like to add options to turn the autosave on/off and to change how often the autosave is called.

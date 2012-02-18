@@ -1,0 +1,41 @@
+*NZB-O-Matic Plus is a fork of NZB-O-Matic - http://nzb.wordtgek.nl*
+
+
+NZB-O-Matic is an easy to use, free, multi-server usenet download program based on NZB files. It requires the .NET framework v2.0 to run and probably contains a few bugs ;)
+
+## Current features
+
+Support multiple servers, it will first try to download from the first server, if the article can't be found it'll try the 2nd, and 3rd, and so on. There is no limit on servers, although each server-connection is a thread looking at that server's download queue, so processor power could come into play when you have a lot of connections.
+Multi-threaded downloading for multiple connections.
+Supports yEnc, UUEncode and Base-64 decoding.
+Imports NZB files that are downloaded from www.newzbin.com.
+
+
+## Setting up your download folder
+
+	1. Select a base directory for all downloads, all folders will be prepended
+           with this path
+           (Both relative and absolute paths are valid.)
+	2. Set a download folder, will be created if it does not already exist
+	3. Add in optional variables to help organize downloads
+           To use a variable simply enter the relevant character preceded by a '%'
+           If you want to actually insert the character '%' you need to escape it 
+           with a '\', ie "\%"
+
+           Currently available variables:
+           ------------------------------
+            '%x', = file extension
+            '%s', = article subject
+            '%n', = file name
+            '%g', = newsgroup
+            '%p', = file poster
+            '%S', = file size
+            '%d', = post date
+            '%D', = date now
+            '%t', = article status ----- NEED 
+            '%i'  = name of file imported from
+            '%z'  = name of the newzbin file minus msgid_<number> part
+
+    (Note: NZB-O-Matic will default to downloading all files to "\Download". To set this to
+           previous versions behavior, the path would be "PathToExe\Download" and folder would
+           be "%i")

@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<servergroups>
+  <servergroup>
+    <servers>
+      <server>
+        <address>news.cistron.nl</address>
+        <port>119</port>
+        <login/>
+        <connections>4</connections>
+      </server>
+      <server>
+        <address>news.astraweb.com</address>
+        <port>119</port>
+        <login>
+          <username>username</username>
+          <password>password</password>
+        </login>
+        <connections>4</connections>
+      </server>
+    </servers>
+  </servergroup>
+  <servergroup>
+    <servers>
+      <server>
+        <address>news.easynews.com</address>
+        <port>119</port>
+        <login>
+          <username>username</username>
+          <password>password</password>
+        </login>
+        <connections>4</connections>
+      </server>
+    </servers>
+  </servergroup>
+</servergroups>
